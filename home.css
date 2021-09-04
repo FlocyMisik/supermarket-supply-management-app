@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.menu-bar {
+    background-color: #7ed6df;
+    /*create a smooth transition between two or more colors*/
+    /* A gradient tilted 315 deg degrees,
+   starting blackand finishing blue*/
+    background-image: linear-gradient(315deg, #7ed6df 0%, #000000 74%);
+    text-align: center;
+    /*position an element relatively to its normal position*/
+    position: relative;
+}
+
+.menu-bar ul {
+/*apply flex layout to children and container itself*/
+    display: inline-flex;
+    list-style: none;
+}
+
+.menu-bar ul li {
+    padding: 14px;
+    color: white;
+}
+
+.menu-bar ul li a {
+    text-decoration: none;
+    /*specifies that a property should inherit its value from its parent element*/
+    color: inherit;
+}
+
+li.active{
+    background-color: #7ed6df;
+    /*add more importance to a propert-override all previous styling*/
+    color: black !important;
+}
+
+.menu-bar ul li:hover {
+    background-color: #7ed6df;
+    color: black;
+    /* background-image: linear-gradient(315deg, #7ed6df 0%, #000000 74%); */
+}
+
+.sub-menu-1 {
+    display: none;
+    /*the element is positioned relative to its 
+    first posistion ancestor element*/
+    position: absolute;
+    background-color: #7ed6df;
+    background-image: linear-gradient(315deg, #7ed6df 0%, #000000 74%);
+}
+
+
+.dropdown:hover .sub-menu-1 {
+    text-align: left;
+    /*display element as a block elent*/
+    display: block;
+    position: absolute;
+    background-color: #7ed6df;
+    background-image: linear-gradient(315deg, #7ed6df 0%, #000000 74%);
+    margin-top: 15px;
+}
+
+.dropdown:hover .sub-menu-1 ul {
+    margin: 10px;
+    /*set the flexible length on flexible items*/
+    display: flex;
+    /*sets how flex elements are placed in the flex container*/
+    flex-direction: column;
+}
+
+.dropdown ul li:hover .sub-menu-1 ul li {
+    width: 150px;
+    padding: 10px;
+    border-bottom: 1px dotted white;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+}
+
+.dropdown ul li:hover .sub-menu-1 ul li a:hover {
+    background-color: #7ed6df;
+    background-image: linear-gradient(315deg, #7ed6df 0%, #000000 74%);
+}
+

@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <style>
+        
+*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        min-height: 100%;
+    display: flex;
+    font-family: sans-serif;
+    background-color: #7ed6df;
+    background-image: linear-gradient(315deg, #7ed6df 0%, #000000 74%);
+    
+
+      }
+      .container{
+    margin: auto;
+    max-width: 90%;
+    width: 500px;
+    border: 1px solid black;
+  }
+  .container form{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: white;
+    
+  
+  }
+  .container h1{
+    text-align: center;
+    margin-bottom: 24px;
+    color: #222;
+  }
+  .container p{
+    text-align: center;
+    margin-bottom: 24px;
+    color: #222;
+}
+.container form .form-1{
+width: 100%;
+height: 40px;
+background: white;
+border-radius: 4px;
+border: 1px,silver;
+margin: 10px 0 18px 0;
+padding: 0 10px;
+text-align: center;
+margin-bottom: 10px;
+
+
+}
+.container form .btn{
+    margin-left: 30%;
+    margin-bottom: 20px;
+    width: 120px;
+    height: 34px;
+    border: none;
+    background-color: #7ed6df;
+    background-image: linear-gradient(315deg, #7ed6df 0%, #000000 74%);
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+    /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+.error{
+  color: red !important;
+}
+  
+    </style>
+
+</head>
+
+<body>
+
+
+<div class="container">
+ 
+  <form id="signup" action=" include/signup.inc.php" method="POST">
+    <h1>Register</h1>  
+    <b><p>Please fill in the required information to create an account.</p></b>
+    <div class="container-1">
+      <label for="First Name">First Name </label>
+        <input type="text" name="firstname" class="form-1" id="fname"></label></br></br>
+        <p class="error" id="errfirstname" style="display: none;">Name cannot be empty </p>
+      </div>
+    
+    <div class="container-1">
+      <label for="Second Name">Second Name </label>
+        <input type="text" name="secondname" class="form-1" id="sname"></label></br></br>
+        <p class="error" id="errsecondname" style="display: none;">Name cannot be empty</p>
+      </div>
+    <div class="container-1">
+      <label for="Date of Birth">Date of Birth</label>
+        <input type="date" name="dob"  class="form-1" id="dob"></label></br></br>
+        <p class="error" id="errdob" style="display: none;">Date of Birth cannot be empty </p>
+        <p class="error" id="errdobname" style="display: none;">Invalid date of Birth</p>
+      </div>
+    <div class="container-1">
+      <label for="cars">Gender:</label>
+      <select name="gender" id="gender" class="form-1">
+        <option value="--select--">--select--</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Unisex">Unisex</option>
+        <option value="Prefer not to say">Prefer not to say</option>
+      </select>
+      <p class="error" id="errgender" style="display: none;">Please select gender</p>
+    </div>
+    <div class="container-1">
+      <label for="Telephone">Telephone </label>
+      <input type="tel" name="telephone"class="form-1" id="tel"></label></br></br>
+      <p class="error" id="errtelephone" style="display: none;">Telephone cannot be empty</p>
+      <p class="error" id="errname" style="display: none;">Invalid telephone number</p>
+    </div>
+   
+    <div class="container-1">
+      <label for="cars">Designation:</label>
+      <select name="designation" id="designation" class="form-1">
+        <option value="--select--">--select--</option>
+        <option value="Manager">Manager</option>
+        <option value="stock Manager">Stock Manager</option>
+        <option value="Purchasing Admin">Purchasing Admin</option>
+        <option value="Warehouse Manager">Warehouse Manager</option>
+      </select>
+      <p class="error" id="errdesignation" style="display: none;">please select designation</p>
+    </div>
+    
+    <div class="container-1">
+      <label for="Email Address">Email Address </label>
+      <input type="email" name="email" class="form-1" id="email"></label></br></br>
+      <p class="error" id="erremail" style="display: none;">email address cannot be empty</p>
+    </div>
+    
+    <div class="container-1">
+      <label for="Password">Password</label>
+       <input type="password" name="password1" class="form-1" id="password1"></label></br></br>
+       <p class="error" id="errpassword1" style="display: none;">password cannot be empty</p>
+      </div>
+   
+    <div class="container-1">
+      <label for="Re-type Password">Re-type Password</label>
+      <input type="password" name="password2" class="form-1" id="password2"></label></br></br>
+      <p class="error" id="errpassword2" style="display: none;">Password cannot be empty</p>
+      <p class="error" id="errpassword" style="display: none;">Password do not match</p>
+    </div>
+   
+    <div>
+      <button type="submit" class="btn">Sign Up</button>
+     <b> <p>Already have an account?<a href="http://127.0.0.1:5501/signup.html" target="_self">Sign in</a></p></b>
+    </div>
+    
+    </form>
+  
+</div>
+
+<script src="jquery.js"></script>
+<script>
+  $(document).ready(function(){
+  $("#signup").submit(function(e) {
+    //prevent from submitting before its validate
+			e.preventDefault();
+      var firstname=$('#fname').val();
+
+      //Initialize number of errors to help track errors as a result of the validation process
+      let errcount=0;
+      if(firstname==""){
+        //Display the error
+        $("#errfirstname").show();
+        //increament the number of errors
+        errcount++;
+      }
+      else{
+        $("#errfirstname").hide();
+      }
+      var secondname=$('#sname').val();
+      if(secondname==""){
+        $("#errsecondname").show();
+        errcount++;
+      }
+      else{
+        $("#errsecondname").hide();
+      }
+      var dob=$('#dob').val();
+      if(secondname==""){
+        $("#errdob").show();
+        errcount++;
+      }
+      else{
+        $("#errdob").hide();
+      }
+      var gender=$('#gender').val();
+      if(secondname==""){
+        $("#errgender").show();
+        errcount++;
+      }
+      else{
+        $("#errgender").hide();
+      }
+      var telephone=$('#telephone').val();
+      if(telephone==""){
+        $("#errtelephone").show();
+        errcount++;
+      }
+      else{
+        $("#errtelephone").hide();
+      }
+      var designation=$('#designation').val();
+      if(secondname==""){
+        $("#errdesignation").show();
+        errcount++;
+      }
+      else{
+        $("#errdesignation").hide();
+      }
+      var email=$('#email').val();
+      if(email==""){
+        $("#erremail").show();
+        errcount++;
+      }
+      else{
+        $("#erremail").hide();
+      }
+      var password1=$('#password1').val();
+      if(password1==""){
+        $("#errpassword1").show();
+        errcount++;
+      }
+      else{
+        $("#errpassword1").hide();
+      }
+      var password2=$('#password2').val();
+      if(secondname==""){
+        $("#errpassword2").show();
+        errcount++;
+      }
+      else{
+        $("#errpassword2").hide();
+      }
+      if(isNaN(telephone)){
+        $("#errname").show();
+        errcount++;
+      }
+      else{
+        $("#errname").hide();
+      }
+      if(password1!=password2){
+        $("#errpassword").show();
+        errcount++;
+      }
+      else{
+        $("#errpassword").hide();
+      }
+      if(dob=>today){
+        $("#errdobname").show();
+        errcount++;
+      }
+      else{
+        $("#errdobname").hide();
+      }
+      //If number of errors is more than 0 return false
+      if(errcount>0){
+        return false;
+      }
+      else{
+        this.submit();
+      }
+    
+  });
+
+});
+
+</script>
+</body>
+</html>
